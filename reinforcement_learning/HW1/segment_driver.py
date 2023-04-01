@@ -24,7 +24,7 @@ def policy(direction):
     elif direction == "left":
         return 0
     else:
-        return np.random.randint(0, 1)
+        return np.random.randint(0, 2)
     
 
 def run_episode(num_actions=2, start_observation=10, p=0.8, terminal=10, 
