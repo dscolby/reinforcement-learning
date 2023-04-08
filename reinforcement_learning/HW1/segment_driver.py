@@ -127,6 +127,7 @@ def estimate_v(num_episodes=1000, num_actions=2, start_observation=10, p=0.8,
             current_obs['episode'] = ep
             df = pd.concat([df, current_obs])
 
+
     return df
 
 
@@ -193,11 +194,15 @@ def plot_fig_2_3(data):
     Returns:
         (alt.Chart): an altair chart
     """
+    data = data.groupby(["initial_state", 
+                         "episode"])["beta^t_reward"].sum().reset_index().groupby(
+        ["initial_state"])["beta^t_reward"].mean().to_frame().reset_index()
+
     return alt.Chart(data, title="Sum of discounted rewards for each state").mark_circle(
         color="maroon").encode(
         x=alt.X('initial_state',
                 title="Initial state, s0"),
-        y=alt.Y('mean',
+        y=alt.Y('beta^t_reward',
                 title='Value function V(s0)')
     )
 
