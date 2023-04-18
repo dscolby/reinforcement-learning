@@ -14,6 +14,8 @@ gym = "^0.26.2"
 altair = "^4.2.2"
 matplotlib = "^3.7.1"
 seaborn = "^0.12.2"
+spatialite = "^0.0.3"
+pymdptoolbox = "^4.0b3"
 
 
 [build-system]
